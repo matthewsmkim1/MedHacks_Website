@@ -30,7 +30,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#NOTE: Whenever you create a new app in django(command for that is django-admin startapp 'name_of_app'),
+# you have to add the app name in the INSTALLED_APPS list
+
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
