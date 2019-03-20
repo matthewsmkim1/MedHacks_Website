@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
     <head>
-        <meta charset="utf-8">
         <title>Login</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}" />
     </head>
     <body>
-        <h1>Login Form</h1>
-        Login here
+        <div class="container">
+            <h1>Login Form</h1>
+            Login here
+            <button class="btn btn-default btn-dark" type="button" name="button">button</button>
+
+            <div class="jumbotron">
+                <h2>hey</h2>
+            </div>
+            <!-- Name is the key in the dictionary of data values in views.py -->
+            <h1>{{ Name }}</h1>
+            <ul>
+                {% for num in numbers %}
+                <li>{{num}}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </body>
 </html>
