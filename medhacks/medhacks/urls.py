@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from medhacks import views as medhacks_views
 
 urlpatterns = [
+    path('', medhacks_views.login_redirect, name='login_redirect'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
 ]
