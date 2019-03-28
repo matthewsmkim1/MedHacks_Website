@@ -3,6 +3,11 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
         {% block head %}
+        <!-- stuff in the blocks in base can be overwritten by other html files that
+            import this base.html.
+            So, says example.html imports base.html, and example html uses block head,
+            that example.html block head overrides this base.html block head
+        -->
         <meta charset="utf-8">
         <title>Base </title>
         {% endblock %}
@@ -12,28 +17,6 @@
         <nav class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">MedHacks</a>
-                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                   <span class="navbar-toggler-icon"></span>
-               </button>
-                {% if user.is_authenticated %}
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/logout">Logout</a>
-                        </li>
-                    </div>
-                {% else %}
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/register">Register</a>
-                        </li>
-                    </div>
-                {% endif %} -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -42,23 +25,24 @@
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/accounts/profile">Profile</a>
+                        <a class="nav-link" href="{% url 'view_profile' %}">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/accounts/logout">Logout</a>
+                        <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
                     {% else %}
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/accounts/login">Login</a>
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/accounts/register">Register</a>
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
                     </li>
                     {% endif %}
                 </div>
-
-
             </nav>
 
 
