@@ -20,5 +20,5 @@ from medhacks import views as medhacks_views
 urlpatterns = [
     path('', medhacks_views.login_redirect, name='login_redirect'),
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls', namespace='accounts_namespace')),
 ]

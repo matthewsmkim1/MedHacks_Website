@@ -19,7 +19,8 @@ takes priority over the block header in base.html -->
         <p>
             Email: {{ user.email }}
         </p>
-
+        <!-- This is how to display model fields  -->
+        <p>{{ user.userprofile.description }}</p>
 
     </div>
 

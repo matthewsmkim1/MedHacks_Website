@@ -25,21 +25,21 @@
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'view_profile' %}">Profile</a>
+                        <a class="nav-link" href="{% url 'accounts_namespace:view_profile' %}">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+                        <a class="nav-link" href="{% url 'accounts_namespace:edit_profile' %}">Edit Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'accounts_namespace:logout' %}">Logout</a>
                     </li>
                     {% else %}
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'accounts_namespace:login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        <a class="nav-link" href="{% url 'accounts_namespace:register' %}">Register</a>
                     </li>
                     {% endif %}
                 </div>
