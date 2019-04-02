@@ -21,4 +21,5 @@ urlpatterns = [
     path('', medhacks_views.login_redirect, name='login_redirect'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts_namespace')),
+    path('application/', include('application.urls', namespace='application_namespace')),
 ]

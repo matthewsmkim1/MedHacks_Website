@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 # Create your models here.
+
+#create model manager if you want a way to filter and query out
+#specific users with certain fields
+#class UserProfileManager(models.Manager):
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,)
     description = models.CharField(max_length=100, default='')

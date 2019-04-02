@@ -8,15 +8,6 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-def home(request):
-    numbers = [1,2,3,4,5]
-    name = 'Matt kim'
-    args = {'Name': name, 'numbers': numbers}
-    return render(request, 'accounts/home.html', args) #django automatically looks
-    #for a templates folder, that's why we make an additional accounts folder
-    #Third parameter in render is the data we want to pass through
-
 #obviously this is view for registration
 def register(request):
     if request.method == 'POST':
@@ -32,7 +23,9 @@ def register(request):
 @login_required
 def view_profile(request):
     args = {'user': request.user}
-    return render(request, 'accounts/profile.html', args)
+    return render(request, 'accounts/profile.html', args) #django automatically looks
+    #for a templates folder, that's why we make an additional accounts folder
+    #Third parameter in render is the data we want to pass through
 
 @login_required
 def edit_profile(request):
