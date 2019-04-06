@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Application</h1>
+<form method="post">
+    {% csrf_token %}
+    <!-- We render using jinja templating language the application form in the views.py file here -->
+    {{ form.as_p }}
+    <button type="submit"> Button </button>
+</form>
+{% endblock %}

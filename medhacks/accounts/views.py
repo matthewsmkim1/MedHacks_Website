@@ -36,6 +36,9 @@ def edit_profile(request):
 
         if form.is_valid():
             form.save()
+            #First parameter is namespace we created and specified in medhacks.urls
+            #second parameter is 'name' we specified in accounts.urls
+            #This way we can avoid hardcoded urls
             return redirect(reverse('accounts_namespace:view_profile'))
         else:
             return redirect(reverse('accounts_namespace:edit_profile'))
