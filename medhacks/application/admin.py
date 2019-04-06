@@ -1,7 +1,7 @@
 from django.contrib import admin
 from application.models import ApplicationModel #always have to import model
 
-#Add class to add more columsn in admin view
+#Add class to add more columns in admin view
 class ApplicationAdmin(admin.ModelAdmin):
     #this tuple displays the ordering in the admin page as well
     list_display = ('user', 'text')
@@ -13,7 +13,7 @@ class ApplicationAdmin(admin.ModelAdmin):
     #we customize
     def get_queryset(self, request):
         queryset = super(ApplicationAdmin, self).get_queryset(request)
-        #if we do '-phone', reverse order
+        #if we do '-user', reverse order
         queryset = queryset.order_by('user')
         return queryset
 
