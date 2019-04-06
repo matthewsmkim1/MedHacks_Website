@@ -1,0 +1,3 @@
+djangoenv/
+*.pyc
+*.sqlite3

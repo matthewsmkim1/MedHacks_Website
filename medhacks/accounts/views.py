@@ -7,14 +7,16 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, update_session_auth_hash
 
 #obviously this is view for registration
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('/accounts/login')
+            user = form.save()
+            login(request, user)
+            return render(request, 'accounts/profile.html', {'user': request.user})
 
     else:
         form = RegistrationForm()
