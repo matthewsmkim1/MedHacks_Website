@@ -44,7 +44,11 @@ def register(request):
             #login(request, user)
             #return render(request, 'accounts/profile.html', {'user': request.user})
             #return redirect('/accounts/login')
-        return HttpResponse('Your form is not valid')
+        else:
+             form = RegistrationForm()
+             args = {'form': form}
+             return render(request, 'accounts/reg_form.html', args)
+#        return HttpResponse('Your form is not valid')
 
     else:
         form = RegistrationForm()
