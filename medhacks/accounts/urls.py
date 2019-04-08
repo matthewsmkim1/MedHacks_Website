@@ -11,6 +11,7 @@ ALSO, RESETTING PASSWORD IS NOT COMPLETED
 
 '''
 from django.urls import path
+from django.conf.urls import url
 from . import views
 from django.contrib.auth.views import (
     LoginView,
@@ -39,5 +40,7 @@ urlpatterns = [
     path('reset-password/', PasswordResetView.as_view(template_name='accounts/reset_password.html'), name='reset_password'), #RESETTING PASSWORD NOT COMPLETED!!!!!!!!!!!!
     path('reset-password/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_complete')
+    path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_complete'),
+    path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
 ]

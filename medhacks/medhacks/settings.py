@@ -118,6 +118,16 @@ USE_L10N = True
 
 USE_TZ = True
 
+## Email setup
+
+DEFAULT_FROM_EMAIL = 'no.reply@medhacks.org'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'no.reply@medhacks.org'
+EMAIL_HOST_PASSWORD = 'medhacks'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
