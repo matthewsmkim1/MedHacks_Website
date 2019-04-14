@@ -21,6 +21,7 @@ class ApplicationModel(models.Model):
     graduating_class = models.CharField(max_length=50, default='NA')
     major = models.CharField(max_length=50, default='-')
     secondmajor = models.CharField(max_length=50, default = 'NA')
+    reimbursement = models.CharField(max_length=50, default = 'No')
     essay1 = models.CharField(max_length=350, default = '-')
     essay2 = models.CharField(max_length=350, default = '-')
     essay3 = models.CharField(max_length=350, default = '-')

@@ -3,7 +3,15 @@
 {% block body %}
 <h1>Application</h1>
 <form method="post">
-    {% csrf_token %}
+    {% csrf_token %}{% if form.errors %} {% for field in form %} {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %} {% endif %}
     <!-- We render using jinja templating language the application form in the views.py file here -->
     {{ form.as_p }}
     <button type="submit"> Button </button>
