@@ -4,7 +4,10 @@ from application.models import ApplicationModel #always have to import model
 #Add class to add more columns in admin view
 class ApplicationAdmin(admin.ModelAdmin):
     #this tuple displays the ordering in the admin page as well
-    list_display = ('user',)
+    list_display = ('user', 'first_name', 'last_name', 'email', 'phone_number', 'birthday', 'race',
+    'city', 'state', 'country', 'gender','education',
+    'university', 'graduating_class', 'major', 'secondmajor', 'reimbursement',
+    'attended', 'essay1', 'essay2', 'essay3', 'essay4', 'resume', 'submit_time', 'how_heard_medhacks')
 
     def user_info(self, obj):
         return obj.description

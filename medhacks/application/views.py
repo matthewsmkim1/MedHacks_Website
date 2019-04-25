@@ -25,7 +25,7 @@ class ApplicationView(TemplateView):
 
     def post(self, request):
         #This initializes and creates a form with the data that was received in the post request
-        form = ApplicationForm(request.POST)
+        form = ApplicationForm(request.POST, request.FILES)
 
         if form.is_valid():
             post = form.save(commit=False)
@@ -57,6 +57,7 @@ class ApplicationView(TemplateView):
             conduct = form.cleaned_data['conduct']
             form.save()
             return render(request, 'application/applied.html')
+        print(form.errors.as_data())
         return render(request, self.template_name, {'form': form})
 
 

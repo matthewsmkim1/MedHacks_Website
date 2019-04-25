@@ -24,10 +24,17 @@ def register(request):
         if form.is_valid():
             print("got here")
             user = form.save()
+
+
+
             # set user to inactive until email is verified
-            user.is_active = False
+            user.is_active = True
+
+
+
             # save this field
             user.save()
+
             # format email information
             current_site = get_current_site(request)
             mail_subject = 'Activate your blog account.'
@@ -40,14 +47,24 @@ def register(request):
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
-            #login(request, user)
-            #return render(request, 'accounts/profile.html', {'user': request.user})
+
+            #change HttpResponse to redirect to an actual web page that says the following
+            #return HttpResponse('Please confirm your email address to complete the registration')
+
+
+
+
+
+
+
+            login(request, user)
+            return render(request, 'accounts/profile.html', {'user': request.user})
             #return redirect('/accounts/login')
         else:
-             form = RegistrationForm()
-             args = {'form': form}
-             return render(request, 'accounts/reg_form.html', args)
+
+            form = RegistrationForm()
+            args = {'form': form}
+            return render(request, 'accounts/reg_form.html', args)
 #        return HttpResponse('Your form is not valid')
 
     else:
