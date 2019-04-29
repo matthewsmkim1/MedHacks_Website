@@ -1,3 +1,4 @@
 djangoenv/
 *.pyc
 *.sqlite3
+__pycache__/
