@@ -28,7 +28,8 @@ def register(request):
 
 
             # set user to inactive until email is verified
-            user.is_active = True
+            # user.is_active = True
+            user.is_active = False
 
 
 

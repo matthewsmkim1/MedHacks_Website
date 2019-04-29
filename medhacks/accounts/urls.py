@@ -10,7 +10,7 @@ Good documentation: https://django.readthedocs.io/en/2.1.x/topics/auth/default.h
 ALSO, RESETTING PASSWORD IS NOT COMPLETED
 
 '''
-from django.urls import path
+from django.urls import path, reverse_lazy
 from django.conf.urls import url
 from . import views
 from django.contrib.auth.views import (

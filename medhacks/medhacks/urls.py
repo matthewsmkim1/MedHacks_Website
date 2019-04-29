@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', include('django.contrib.auth.urls')),
     path('', medhacks_views.login_redirect, name='login_redirect'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts_namespace')),

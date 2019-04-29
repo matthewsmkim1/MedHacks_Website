@@ -1,5 +1,5 @@
 djangoenv/
 *.pyc
 *.sqlite3
-__pycache__/
+*/__pycache__/
 medhacks/media/*
