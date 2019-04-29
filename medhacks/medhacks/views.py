@@ -5,6 +5,6 @@ def login_redirect(request):
         #redirect to profile page?
     #else
     if request.user.is_authenticated:
-        return redirect('/accounts/profile')
+        return redirect('/application')
     else:
         return redirect('/accounts/login')

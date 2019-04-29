@@ -25,12 +25,6 @@
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts_namespace:view_profile' %}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts_namespace:edit_profile' %}">Edit Profile</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'application_namespace:application' %}">Application</a>
                     </li>
                     <li class="nav-item">
