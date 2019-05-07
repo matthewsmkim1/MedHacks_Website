@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'medhacks/media/')
 
 LOGIN_REDIRECT_URL = '/application/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

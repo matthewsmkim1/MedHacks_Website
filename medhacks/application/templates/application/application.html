@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
+{% load crispy_forms_tags %}
+
 <h1>Application</h1>
 <form method="post" enctype="multipart/form-data">
 
@@ -14,7 +16,7 @@
         </div>
         {% endfor %} {% endif %}
     <!-- We render using jinja templating language the application form in the views.py file here -->
-    {{ form.as_p }}
+    {{ form|crispy }}
     <input type="submit" value="Submit">
 </form>
 <br />

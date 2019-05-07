@@ -1,8 +1,9 @@
 from django import forms
-from application.models import ApplicationModel
 from django.forms.widgets import SelectDateWidget
 from django.core.exceptions import ValidationError
 from django.conf import settings
+from django.utils.safestring import mark_safe
+from application.models import ApplicationModel
 import json, os, csv, pickle
 
 class ApplicationForm(forms.ModelForm):
@@ -55,7 +56,7 @@ class ApplicationForm(forms.ModelForm):
          MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons
          in-line with the MLH Privacy Policy. I further agree to the terms of both the MLH Contest Terms and
          Conditions and the MLH Privacy Policy''',required=True)
-    conduct = forms.BooleanField(label=' I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"target="_blank">MLH Code of Conduct</a>',required=True)
+    conduct = forms.BooleanField(label=mark_safe(' I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"target="_blank">MLH Code of Conduct</a>'),required=True)
 
     def clean(self):
         if self.cleaned_data['university'] == 'Other':
