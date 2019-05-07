@@ -1,3 +1,64 @@
+@font-face {
+  font-family: custom;
+  src: url(./Ok-Regular.ttf);
+}
+
 body {
-    background-color: blue
+  font-family: custom;
+  background-color: blue;
+  background-image: linear-gradient(#392c5f, #304b78, #57bc8b);
+  color: white;
+  min-height: 100vh;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+}
+
+.form-control {
+  background-color: transparent !important;
+  font-size: 1.5rem;
+  color: white;
+  border-width: 2px;
+}
+
+.form-control:focus {
+  color: white;
+}
+
+nav {
+  top: 1%;
+
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem;
+  margin-left: 3vw;
+}
+a .logo {
+  margin-top: 0.5rem;
+  align-self: center;
+  width: 30vw;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.button-container a {
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  margin: 1rem 3vw;
+  width: 94vw;
+}
+
+.text-muted {
+  color: white !important;
 }

@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-        {% block head %}
-        <!-- stuff in the blocks in base can be overwritten by other html files that
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    {% block head %}
+    <!-- stuff in the blocks in base can be overwritten by other html files that
             import this base.html.
             So, says example.html imports base.html, and example html uses block head,
             that example.html block head overrides this base.html block head
         -->
-        <meta charset="utf-8">
-        {% endblock %}
-    </head>
-    <body>        
-        <br>
-        <nav class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <meta charset="utf-8" />
+    {% endblock %} {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/style.css'  %}" />
+  </head>
+  <body>
+    <nav>
+      <a class="navbar-brand" href="#"
+        ><img
+          class="logo"
+          src="http://d3kys98mts2cx5.cloudfront.net/2019/MedHacks-White-Border.png"
+      /></a>
+
+      <div class="button-container">
+        {% if user.is_authenticated %}
+        <div class="nav-item">
+          <a
+            class="nav-link"
+            href="{% url 'application_namespace:application' %}"
+            >Application</a
+          >
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="{% url 'accounts_namespace:logout' %}"
+            >Logout</a
+          >
+        </div>
+        {% else %}
+
+        <div class="nav-item">
+          <a class="nav-link" href="{% url 'accounts_namespace:login' %}"
+            >Login</a
+          >
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="{% url 'accounts_namespace:register' %}"
+            >Register</a
+          >
+        </div>
+        {% endif %}
+      </div>
+    </nav>
+    <nav class="container">
+      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">MedHacks</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,13 +79,12 @@
                         <a class="nav-link" href="{% url 'accounts_namespace:register' %}">Register</a>
                     </li>
                     {% endif %}
+                </ul>
                 </div>
-            </nav>
-
-            {% block body %}
-                <h1>Base</h1>
-            {% endblock %}
-        </nav>
-
-    </body>
+            </nav> -->
+    </nav>
+    {% block body %}
+    <h1>Base</h1>
+    {% endblock %}
+  </body>
 </html>
