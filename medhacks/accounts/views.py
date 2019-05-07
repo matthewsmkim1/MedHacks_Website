@@ -28,8 +28,8 @@ def register(request):
 
 
             # set user to inactive until email is verified
-            # user.is_active = True
-            user.is_active = False
+            user.is_active = True
+            #user.is_active = False
 
 
 
@@ -53,14 +53,9 @@ def register(request):
             #return HttpResponse('Please confirm your email address to complete the registration')
 
 
-
-
-
-
-
-            login(request, user)
-            return render(request, 'accounts/profile.html', {'user': request.user})
-            #return redirect('/accounts/login')
+            #login(request, user)
+            #return render(request, 'accounts/profile.html', {'user': request.user})
+            return redirect('/accounts/login')
         else:
 
             form = RegistrationForm()
