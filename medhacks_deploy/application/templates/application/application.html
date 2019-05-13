@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+
+
+    {% load crispy_forms_tags %}
+
+    <h1>Application</h1>
+    <form method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}{% if form.errors %} {% for field in form %} {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+            {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+            {% endfor %} {% endif %}
+        <!-- We render using jinja templating language the application form in the views.py file here -->
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+    </form>
+    <br />
+
+
+</div>
+{% endblock %}

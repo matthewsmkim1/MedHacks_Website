@@ -1,9 +1,4 @@
-djangoenv/
-*.pyc
-*.sqlite3
-*/__pycache__/*
-medhacks/media/*
-db.sqlite3
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

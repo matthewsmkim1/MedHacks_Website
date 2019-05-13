@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+<!-- every block you write in this file overrides the same corresponding block
+in base.html since we extend base.html. For example, this block header
+takes priority over the block header in base.html -->
+{% block head %}
+<title>Profile </title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1> Profile </h1>
+        <p>
+            Username: {{ user }}
+        </p>
+        <p>
+            Name: {{ user.first_name }} {{ user.last_name }}
+        </p>
+        <p>
+            Email: {{ user.email }}
+        </p>
+        <!-- This is how to display model fields  -->
+        <p>{{ user.userprofile.description }}</p>
+
+    </div>
+
+
+{% endblock %}
