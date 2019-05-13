@@ -25,7 +25,7 @@ SECRET_KEY = '*!wvuq+8n+yanw$qvn)7*t5p&qv_u(6b=y7ji&zgz%oxv!cx6c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'medhacks-env.3jg2hgsc34.us-west-2.elasticbeanstalk.com']
 #medhacks.4amniifmmf.us-west-2.elasticbeanstalk.com
 
 # Application definition
