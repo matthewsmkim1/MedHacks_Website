@@ -32,6 +32,7 @@ If we have trouble, look in tutorial number 31
 #names in the path is used for reverse path, to avoid hardcoded urls.
 urlpatterns = [
     path('login/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('login_after_reg/', LoginView.as_view(template_name='accounts/login_after_reg.html'), name='login_after_reg'),
     path('logout/', LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
     path('register/', views.register, name='register'), #this means that accounts/ will render the register function in the views file in accounts
     path('change-password/', views.change_password, name='change_password'),

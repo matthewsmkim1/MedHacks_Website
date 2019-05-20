@@ -1,0 +1,10 @@
+To ssh into medhacks
+1. First run eb init --interactive, and follow instructions
+2. Make key-pair
+3. Run 'eb ssh'
+4. Once in ssh, run 'sudo find / -name manage.py' to find app
+5. 'cd /opt/python/bundle/10/app'
+
+
+To scp
+1. scp -i /Users/MatthewKim/.ssh/matt_kim ec2-user@54.164.35.207:/opt/python/bundle/10/app/manage.py .

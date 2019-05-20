@@ -55,7 +55,7 @@ def register(request):
 
             #login(request, user)
             #return render(request, 'accounts/profile.html', {'user': request.user})
-            return redirect('/accounts/login')
+            return redirect('/accounts/login_after_reg')
         else:
 
             form = RegistrationForm()
