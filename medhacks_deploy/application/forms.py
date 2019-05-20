@@ -38,17 +38,21 @@ class ApplicationForm(forms.ModelForm):
     education = forms.ChoiceField(label='Current Level of Education', choices =
         (('High School', 'High School'), ('Undergraduate', 'Undergraduate'),
         ('Graduate', 'Graduate'), ('Professional', 'Professional')))
+    graduate = forms.ChoiceField(label='If Graduate Education, Which Field', choices =
+        (('NA', 'NA'), ('Medical', 'Medical'), ('Engineering', 'Engineering'), ('Business', 'Business'), ('Liberal Arts', 'Liberal Arts'), ('Law', 'Law'),
+        ('Other', 'Other')), required=False)
+    professional = forms.CharField(label='If Professional, Which Company', max_length=20, required=False)
     university = forms.ChoiceField(label='University', choices=tupled_list_colleges)
     other_uni = forms.CharField(label='Other University', max_length=100, required=False)
     birthday = forms.CharField(label='Birthday', max_length=100, help_text='Input birthday in form MM/DD/YYYY')
-    graduating_class = forms.ChoiceField(label='Graduating Class', choices=(('NA','NA'),('2018','2018'), ('2019','2019'), ('2020','2020'), ('2021+','2021+')))
+    graduating_class = forms.ChoiceField(label='Graduating Class', choices=(('NA','NA'), ('2019','2019'), ('2020','2020'), ('2021','2021'), ('2022+','2022+')))
     major = forms.ChoiceField(label='Major/Area of Expertise', choices=tupled_list_majors)
     secondmajor = forms.ChoiceField(label='Second Major/Area of Expertise', choices=tupled_list_majors, required=False)
     attended = forms.ChoiceField(label='Have you attended MedHacks previously?', choices=CHOICESMEDHACKS, widget=forms.RadioSelect())
     reimbursement = forms.ChoiceField(label='Will you be seeking a travel reimbursement?', choices=CHOICESMEDHACKS, widget=forms.RadioSelect())
-    essay1 = forms.CharField(label='Why do you want to attend MedHacks 2018? (Max 350 characters)', widget=forms.Textarea, max_length=350)
+    essay1 = forms.CharField(label='Why do you want to attend MedHacks 2019? (Max 350 characters)', widget=forms.Textarea, max_length=350)
     essay2 = forms.CharField(label='What skills can you bring to the hackathon? (Max 350 characters)', widget=forms.Textarea, max_length=350)
-    essay3 = forms.CharField(label='What would you like to see at MedHacks 2018? (Max 350 characters)', widget=forms.Textarea, max_length=350)
+    essay3 = forms.CharField(label='What would you like to see at MedHacks 2019? (Max 350 characters)', widget=forms.Textarea, max_length=350)
     essay4 = forms.CharField(label='Is there anything you would like us to know? (Max 350 characters)', widget=forms.Textarea, required=False, max_length=350)
     resume = forms.FileField(label='Upload Resume', widget = forms.FileInput, required=True)
     how_heard_medhacks = forms.ChoiceField(label='How did you hear about MedHacks 2019', choices=CHOICES_HEARD, widget=forms.RadioSelect())
@@ -71,6 +75,6 @@ class ApplicationForm(forms.ModelForm):
         #Remember to leave a comma at the end
         fields = ('first_name', 'last_name', 'email', 'phone_number',
         'city', 'state', 'country', 'birthday', 'gender', 'race',
-        'education', 'university', 'other_uni', 'major','secondmajor','graduating_class', 'attended',
+        'education', 'graduate', 'professional', 'university', 'other_uni', 'major','secondmajor','graduating_class', 'attended',
         'essay1', 'essay2', 'essay3', 'essay4', 'reimbursement', 'how_heard_medhacks', 'resume', 'permission', 'conduct',
         )

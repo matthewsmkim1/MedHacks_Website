@@ -17,6 +17,8 @@ class ApplicationModel(models.Model):
     gender = models.CharField(max_length=50, default='-')
     race = models.CharField(max_length=50, default='-')
     education = models.CharField(max_length=20, default = '-')
+    graduate = models.CharField(max_length=20, default = '-')
+    professional = models.CharField(max_length=20, default = '-')
     university = models.CharField(max_length=100, default='-')
     graduating_class = models.CharField(max_length=50, default='NA')
     major = models.CharField(max_length=50, default='-')
