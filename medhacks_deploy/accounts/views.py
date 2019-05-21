@@ -25,13 +25,9 @@ def register(request):
             print("got here")
             user = form.save()
 
-
-
             # set user to inactive until email is verified
             user.is_active = True
             #user.is_active = False
-
-
 
             # save this field
             user.save()
@@ -57,16 +53,16 @@ def register(request):
             #return render(request, 'accounts/profile.html', {'user': request.user})
             return redirect('/accounts/login_after_reg')
         else:
-
-            form = RegistrationForm()
-            args = {'form': form}
-            return render(request, 'accounts/reg_form.html', args)
-#        return HttpResponse('Your form is not valid')
-
-    else:
+            print(form.errors.as_data())
+            print(len(form.errors.as_data()))
+            # form = RegistrationForm()
+            # args = {'form': form}
+            # return render(request, 'accounts/reg_form.html', args)
+            #render(request, 'accounts/reg_form.html')
+    else:    
         form = RegistrationForm()
-        args = {'form': form}
-        return render(request, 'accounts/reg_form.html', args)
+    args = {'form': form}
+    return render(request, 'accounts/reg_form.html', args)
 
 # view for activating user after activation email link is clicked
 def activate(request, uidb64, token):
