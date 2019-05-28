@@ -6,5 +6,18 @@ To ssh into medhacks
 5. 'cd /opt/python/bundle/10/app'
 
 
-To scp
+To get ip of beanstalk, 'eb ssh', and then 'exit'. IP will appear
+
+
+To scp a file
 1. scp -i /Users/MatthewKim/.ssh/matt_kim ec2-user@54.164.35.207:/opt/python/bundle/10/app/manage.py .
+
+To scp a directory
+1. scp -r -i /Users/MatthewKim/.ssh/matt_kim ec2-user@3.82.62.21:/opt/python/bundle/9/app/medhacks/media/resume/ .
+
+
+-----------------
+Instructions for viewing applicant resume
+1. Except for Jasmine11910, clark.dav, and natashaylwong, find the matching
+resume name in the amazon s3 bucket. For the three I mentioned above, I have
+downloaded their resumes

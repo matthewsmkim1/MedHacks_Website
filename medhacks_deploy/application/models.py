@@ -2,6 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from .formatChecker import ContentTypeRestrictedFileField
+from django.conf import settings
+
+import os
+import boto3
+
+def get_file_path(instance, filename):
+    filename = instance.user.username + '-' + filename
+    filename.replace(' ', '_')
+    return os.path.join('resume', filename)
+
+
 # Create your models here.
 class ApplicationModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -30,7 +41,7 @@ class ApplicationModel(models.Model):
     essay4 = models.CharField(max_length=350, default = '-')
     reimbursement = models.CharField(max_length=50, default='No')
     attended = models.CharField(max_length=50, default = 'No')
-    resume = ContentTypeRestrictedFileField(upload_to='resume', content_types=['application/pdf','application/docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/doc','image/jpeg'],max_upload_size=2097152,blank=False, null=False)
+    resume = ContentTypeRestrictedFileField(upload_to=get_file_path, content_types=['application/pdf','application/docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/doc','image/jpeg'],max_upload_size=2097152,blank=False, null=False)
     permission = models.BooleanField(default=True)
     conduct = models.BooleanField(default=True)
     submit_time = models.DateTimeField(auto_now_add=True)

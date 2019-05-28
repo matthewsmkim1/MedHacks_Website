@@ -2,8 +2,13 @@ from django.views.generic import TemplateView
 from application.forms import ApplicationForm
 from application.models import ApplicationModel
 from django.shortcuts import render, redirect
+from django.conf import settings
 
 from django.http import HttpResponse
+
+import logging
+import boto3
+from botocore.exceptions import ClientError
 
 class ApplicationView(TemplateView):
     template_name = 'application/application.html'
@@ -28,9 +33,11 @@ class ApplicationView(TemplateView):
         form = ApplicationForm(request.POST, request.FILES)
 
         if form.is_valid():
+
             post = form.save(commit=False)
             post.user = request.user
             post.save()
+            print(post.user.username)
             first = form.cleaned_data['first_name']
             last = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
@@ -56,6 +63,22 @@ class ApplicationView(TemplateView):
             permission = form.cleaned_data['permission']
             conduct = form.cleaned_data['conduct']
             form.save()
+            #upload to s3 here
+            #https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-uploading-files.html
+
+            s3_client = boto3.client('s3')
+            object_name = request.FILES.get('resume')
+            bucket = 'medhacks-2019-resumes'
+            file_name = request.FILES
+            file_overwrite = False
+
+            s3 = boto3.client('s3')
+            s3_client.upload_file(settings.RESUME_ROOT + post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_'),
+                bucket, str(post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_')))
+
+            #Enforce unique file names
+            #https://stackoverflow.com/questions/2673647/enforce-unique-upload-file-names-using-django
+
             return render(request, 'application/applied.html')
         print(form.errors.as_data())
         return render(request, self.template_name, {'form': form})
