@@ -2,6 +2,9 @@ from django.views.generic import TemplateView
 from application.forms import ApplicationForm
 from application.models import ApplicationModel
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+
 
 from django.http import HttpResponse
 
@@ -56,6 +59,16 @@ class ApplicationView(TemplateView):
             permission = form.cleaned_data['permission']
             conduct = form.cleaned_data['conduct']
             form.save()
+
+            # send email
+
+            mail_subject = 'Thank you for applying to Medhacks!'
+            message = render_to_string('application/submission_email.html', {
+                'firstname': first,
+            })
+            to_email = form.cleaned_data.get('email')
+            email_obj = EmailMessage(mail_subject, message, to=[email])
+            email_obj.send()
             return render(request, 'application/applied.html')
         print(form.errors.as_data())
         return render(request, self.template_name, {'form': form})

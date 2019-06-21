@@ -37,14 +37,13 @@ def register(request):
             user.save()
 
             # format email information
-            current_site = get_current_site(request)
-            mail_subject = 'Thank you for registering for medhacks!'
-            message = render_to_string('accounts/acc_active_email.html', {
-                'user': user,                
-            })
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(mail_subject, message, to=[to_email])
-            email.send()
+            #mail_subject = 'Thank you for registering for medhacks!'
+            #message = render_to_string('accounts/acc_active_email.html', {
+            #    'user': user,
+            #})
+            #to_email = form.cleaned_data.get('email')
+            #email = EmailMessage(mail_subject, message, to=[to_email])
+            #email.send()
 
             #change HttpResponse to redirect to an actual web page that says the following
             #return HttpResponse('Please confirm your email address to complete the registration')
