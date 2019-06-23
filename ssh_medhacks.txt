@@ -12,9 +12,16 @@ To get ip of beanstalk, 'eb ssh', and then 'exit'. IP will appear
 To scp a file
 1. scp -i /Users/MatthewKim/.ssh/matt_kim ec2-user@54.164.35.207:/opt/python/bundle/10/app/manage.py .
 
+or
+
+scp -i /Users/MatthewKim/.ssh/matt_kim ec2-user@35.175.146.44:/opt/python/current/app/db.sqlite3 .
+
 To scp a directory
 1. scp -r -i /Users/MatthewKim/.ssh/matt_kim ec2-user@3.82.62.21:/opt/python/bundle/9/app/medhacks/media/resume/ .
 
+or
+
+scp -r -i /Users/MatthewKim/.ssh/matt_kim ec2-user@35.175.146.44:/opt/python/current/app/medhacks/media/resume/ .
 
 -----------------
 Instructions for viewing applicant resume

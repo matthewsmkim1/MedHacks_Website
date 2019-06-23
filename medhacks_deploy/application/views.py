@@ -3,6 +3,8 @@ from application.forms import ApplicationForm
 from application.models import ApplicationModel
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 
 from django.http import HttpResponse
 
@@ -63,6 +65,17 @@ class ApplicationView(TemplateView):
             permission = form.cleaned_data['permission']
             conduct = form.cleaned_data['conduct']
             form.save()
+
+            # send email
+
+            mail_subject = 'Thank you for applying to Medhacks!'
+            message = render_to_string('application/submission_email.html', {
+                'firstname': first,
+            })
+            to_email = form.cleaned_data.get('email')
+            email_obj = EmailMessage(mail_subject, message, to=[email])
+            email_obj.send()
+
             #upload to s3 here
             #https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-uploading-files.html
 
