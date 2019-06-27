@@ -85,9 +85,24 @@ class ApplicationView(TemplateView):
             file_name = request.FILES
             file_overwrite = False
 
+
+            #test@1 - fails
+            #test.1
+            #test+1 - fails
+
+            remove_weird_char_name = post.user.username.replace('@', '');
+            remove_weird_char_name = remove_weird_char_name.replace('+', '')
+
             s3 = boto3.client('s3')
-            s3_client.upload_file(settings.RESUME_ROOT + post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_'),
+            # s3_client.upload_file(settings.RESUME_ROOT + post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_'),
+            #     bucket, str(post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_')))
+
+
+            s3_client.upload_file(settings.RESUME_ROOT + remove_weird_char_name + '-' + request.FILES.get('resume').name.replace(' ', '_'),
                 bucket, str(post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_')))
+
+
+
 
             #Enforce unique file names
             #https://stackoverflow.com/questions/2673647/enforce-unique-upload-file-names-using-django

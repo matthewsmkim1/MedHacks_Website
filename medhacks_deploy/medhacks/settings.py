@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*!wvuq+8n+yanw$qvn)7*t5p&qv_u(6b=y7ji&zgz%oxv!cx6c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'apply.medhacks.io',
     'django-env.f4nh5h3mep.us-east-1.elasticbeanstalk.com',
