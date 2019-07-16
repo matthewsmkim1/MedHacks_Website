@@ -25,9 +25,12 @@ SECRET_KEY = '*!wvuq+8n+yanw$qvn)7*t5p&qv_u(6b=y7ji&zgz%oxv!cx6c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'apply.medhacks.io',
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'apply.medhacks.io', 'apply.medhacks.io/admin', 'apply.medhacks.io/admin/*', 'apply.medhacks.io/media/resume/*',
     'django-env.f4nh5h3mep.us-east-1.elasticbeanstalk.com',
     'www.apply.medhacks.io']
+
+
+
 #medhacks.4amniifmmf.us-west-2.elasticbeanstalk.com
 
 # Application definition
@@ -142,6 +145,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'medhacks/media/')
 
 RESUME_ROOT = os.path.join(BASE_DIR, 'medhacks/media/resume/')
+
+DATABASE_ROOT = os.path.join(BASE_DIR, 'db.sqlite3')
 
 LOGIN_REDIRECT_URL = '/application/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

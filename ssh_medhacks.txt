@@ -10,7 +10,7 @@ To get ip of beanstalk, 'eb ssh', and then 'exit'. IP will appear
 
 
 To scp a file
-1. scp -i /Users/MatthewKim/.ssh/matt_kim ec2-user@54.164.35.207:/opt/python/bundle/10/app/manage.py .
+1. scp -i /Users/MatthewKim/.ssh/matt_kim ec2-user@3.90.110.132:/opt/python/bundle/10/app/db.sqlite3 .
 
 or
 
