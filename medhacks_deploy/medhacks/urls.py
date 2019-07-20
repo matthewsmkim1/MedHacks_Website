@@ -26,4 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts_namespace')),
     path('application/', include('application.urls', namespace='application_namespace')),
+    path('travel_reimbursement/', include('travel.urls', namespace='travel_namespace')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

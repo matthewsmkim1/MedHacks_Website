@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div id="accordion">
+   <div class="card-body">
+      <h1 style="text-align: center">Thank You</h1>
+      <br />
+      <p style="text-align: center">You have successfully submitted your travel reimbursement receipt!</p>
+      <div style="height: 25px"></div>
+      <a class="rightitem profButton" href="{% url 'accounts:home' %}">Back to Profile</a>
+      {% load static %}
+      <img style="width: 40vw; margin-left: auto;margin-right:auto; display: block;" src="{% static 'appliMoose.png' %}"/>
+    </div>
+</div>
+{% endblock %}

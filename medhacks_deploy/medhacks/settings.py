@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'apply.medhacks.io',
 INSTALLED_APPS = [
     'accounts',
     'application',
+    'travel',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
