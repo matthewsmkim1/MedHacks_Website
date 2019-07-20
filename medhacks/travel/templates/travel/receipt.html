@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block specificcss %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" /> {% endblock %} {% block body %}
+
+
+<!-- The user hasn't submitted a receipt yet -->
+<div class=card-body style="width: 90vw; margin-left: 5vw;">
+    <h1>Travel Reimbursement Receipt Form</h1>
+    <h2>Hello {{user.first_name}}! </h2>
+    <div style="height: 25px"></div>
+    <p>
+        Submit the necessary paperwork to redeem your travel reimbursement.
+        You may submit the forms <strong>no later than September 16</strong> to receive your reimbursement.
+        Your receipts must also adhere to the guidelines noted
+        <a target="_blank" href="https://drive.google.com/open?id=1IRAy-KqUC7yyR0I8wi7oJ1IxWBkLKIlp">here</a>
+        - if they do not adhere, we take no responsibility in following up to request the correct form.
+      </p>
+      <p>
+        Please keep in mind that after we submit all reimbursements to our Finance Department, we cannot speed up the process.
+        If you have any questions please contact travel@medhacks.org.
+      </p>
+
+    <form action={% url 'travel:receipt' %} method="post" enctype="multipart/form-data">
+        <p>Please enter your <strong>Permanent</strong> Address below. We will send your reimbursement check to this address!</p>
+        {% csrf_token %} {{form|crispy}} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %} {% endif %}
+
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+        <p>
+            {{ form.docfile.errors }} {{ form.docfile }}
+        </p>
+
+
+        <input class="applyButton" type="submit" value="Submit" />
+    </form>
+</div>
+
+<div style="height: 50px"></div>
+{% endblock %}

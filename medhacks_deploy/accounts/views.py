@@ -16,13 +16,21 @@ from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 
+from django.conf import settings
+
+import os.path
+from os import path
+import logging
+import boto3
+import datetime
+from botocore.exceptions import ClientError
 
 #obviously this is view for registration
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(data = request.POST)
         if form.is_valid():
-            print("got here")
+            print("registering")
             user = form.save()
 
             # set user to inactive until email is verified
@@ -48,6 +56,24 @@ def register(request):
             #change HttpResponse to redirect to an actual web page that says the following
             #return HttpResponse('Please confirm your email address to complete the registration')
 
+            # s3_client = boto3.client('s3')
+            # bucket = 'medhacks-2019-databases'
+            # file_overwrite = False
+            #
+            # s3 = boto3.client('s3')
+            # # s3_client.upload_file(settings.RESUME_ROOT + post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_'),
+            # #     bucket, str(post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_')))
+            # if (user.id % 4 == 0):
+            #     if (path.exists(settings.DATABASE_ROOT)):
+            #         s3_client.upload_file(settings.DATABASE_ROOT,
+            #             bucket, str(datetime.datetime.now()) + settings.DATABASE_ROOT)
+            #         print('database upload to s3 correct')
+            #     else:
+            #         print('database does not exists caught error')
+            #
+            #
+
+
 
             #login(request, user)
             #return render(request, 'accounts/profile.html', {'user': request.user})
@@ -59,7 +85,7 @@ def register(request):
             # args = {'form': form}
             # return render(request, 'accounts/reg_form.html', args)
             #render(request, 'accounts/reg_form.html')
-    else:    
+    else:
         form = RegistrationForm()
     args = {'form': form}
     return render(request, 'accounts/reg_form.html', args)

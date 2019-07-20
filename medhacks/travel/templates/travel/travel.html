@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div>
+  <div class=card-body style="width: 90vw; margin-left: 5vw;">
+    <h1>Travel Reimbursement Application</h1>
+    <div style="height: 25px"></div>
+    <p>Please fill out this form if you'd like to apply for a travel reimbursement to MedHacks 2019. Below are the regional designations, reimbursement limit, and deadlines:</p>
+    <ul>
+      <li>
+        International/West Coast (up to $250): July 31 at 11:59 EST
+      </li>
+      <li>
+        Midwest (up to $100): August 31 at 11:59 EST
+      </li>
+      <li>
+        Regional (up to $50): August 31 at 11:59 EST
+      </li>
+    </ul>
+    <p>Email us at info@medhacks.io with any questions!</p>
+    <div style="height: 25px"></div>
+    <form action={% url 'travel_namespace:travel' %} method="post" enctype='multipart/form-data'>
+      {% csrf_token %}
+      {{form|crispy}}
+      <input class="applyButton" type="submit" value="Submit" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}

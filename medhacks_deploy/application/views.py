@@ -8,6 +8,8 @@ from django.core.mail import EmailMessage
 
 from django.http import HttpResponse
 
+import os.path
+from os import path
 import logging
 import boto3
 from botocore.exceptions import ClientError
@@ -89,7 +91,6 @@ class ApplicationView(TemplateView):
             #test@1 - fails
             #test.1
             #test+1 - fails
-
             remove_weird_char_name = post.user.username.replace('@', '');
             remove_weird_char_name = remove_weird_char_name.replace('+', '')
 
@@ -97,10 +98,13 @@ class ApplicationView(TemplateView):
             # s3_client.upload_file(settings.RESUME_ROOT + post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_'),
             #     bucket, str(post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_')))
 
-
-            s3_client.upload_file(settings.RESUME_ROOT + remove_weird_char_name + '-' + request.FILES.get('resume').name.replace(' ', '_'),
-                bucket, str(post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_')))
-
+            if (path.exists(settings.RESUME_ROOT + remove_weird_char_name + '-' + request.FILES.get('resume').name.replace(' ', '_'))):
+                s3_client.upload_file(settings.RESUME_ROOT + remove_weird_char_name + '-' + request.FILES.get('resume').name.replace(' ', '_'),
+                    bucket, str(post.user.username + '-' + request.FILES.get('resume').name.replace(' ', '_')))
+                print('file upload to s3 correct')
+            else:
+                print('file does not exists caught error')
+                print('path that does not exist: ' + str(settings.RESUME_ROOT + remove_weird_char_name + '-' + request.FILES.get('resume').name.replace(' ', '_')))
 
 
 

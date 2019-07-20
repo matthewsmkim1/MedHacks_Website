@@ -6,10 +6,18 @@
 
 
     {% if user.userprofile.user_application_status == 'Y' %}
-        <p>
-            Congratulations and welcome to MedHacks! After our most competitive application round yet, including highly qualified applicants from all around the world, we are pleased to offer you acceptance to MedHacks 2019. We hope you’re excited to join 750
+        <h1 style="text-align: center; font-size: 250%">
+            Congratulations and welcome to MedHacks!
+        </h1>
+        <br />
+        <p style="text-align: center; font-size: 130%">
+
+            After our most competitive application round yet, including highly qualified applicants from all around the world, we are pleased to offer you acceptance to MedHacks 2019. We hope you’re excited to join 750
             of the brightest and most diverse minds from across the United States and abroad to create something groundbreaking this fall.
         </p>
+        <!--  PUT FORM RSP INFORMATION HERE -->
+
+
     {% elif user.userprofile.user_application_status == 'N' %}
         <p>
             Thank you for your interest in MedHacks. We had our most competitive application pool yet, and due to an extremely talented and large group of applicants, we unfortunately are unable to offer you a spot at MedHacks 2019. We hope that this doesn't stop
